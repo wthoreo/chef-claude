@@ -1,16 +1,97 @@
-# React + Vite
+# Chef Claude
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Chef Claude is a React + Vite web app that suggests recipes from ingredients you already have.
+It uses the Hugging Face Inference API (Llama 3.1 Instruct) to generate recipe responses in Markdown, then renders them in the UI.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Add ingredients through a simple form
+- View your current ingredient list
+- Generate an AI recipe when you have enough ingredients
+- Render AI response as formatted Markdown
+- Clean, responsive UI styling
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19
+- Vite 8
+- react-markdown
+- @huggingface/inference
+- ESLint (flat config)
 
-## Expanding the ESLint configuration
+## Project Structure
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```text
+chef-claude/
+├── public/
+│   ├── favicon.svg
+│   └── icons.svg
+├── src/
+│   ├── assets/
+│   │   └── chef-claude-icon.png
+│   ├── components/
+│   │   ├── ClaudeRecipe.jsx
+│   │   ├── Header.jsx
+│   │   ├── IngredientsList.jsx
+│   │   └── Main.jsx
+│   ├── ai.js
+│   ├── App.jsx
+│   ├── index.css
+│   └── index.jsx
+├── eslint.config.js
+├── index.html
+├── package.json
+└── vite.config.js
+```
+
+## Getting Started
+
+### 1) Install dependencies
+
+```bash
+npm install
+```
+
+### 2) Configure environment variable
+
+Create a `.env` file in the project root:
+
+```env
+VITE_HF_ACCESS_TOKEN=your_huggingface_token_here
+```
+
+This token is required for Hugging Face chat completion requests.
+
+### 3) Start development server
+
+```bash
+npm run dev
+```
+
+## Available Scripts
+
+- `npm run dev` — Start Vite dev server
+- `npm run build` — Build production bundle
+- `npm run preview` — Preview production build locally
+- `npm run lint` — Run ESLint
+
+## How It Works
+
+1. User adds ingredients in the form.
+2. Ingredients are stored in React state.
+3. After more than 3 ingredients, a **Get a recipe** button appears.
+4. Clicking it calls `getRecipeFromMistral()` in `src/ai.js`.
+5. The app sends:
+   - a system prompt (recipe assistant behavior)
+   - a user prompt with ingredient list
+6. Response Markdown is rendered by `react-markdown` in `ClaudeRecipe`.
+
+## Notes
+
+- `.env` files are gitignored.
+- Default ingredient examples are preloaded in `Main.jsx` for quick testing.
+- Current document title in `index.html` is still `vite-react-project` and can be renamed if desired.
+
+## License
+
+No license file is currently included in this repository.
