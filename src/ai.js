@@ -12,6 +12,7 @@ in markdown to make it easier to render to a web page
 const hf = new HfInference(import.meta.env.VITE_HF_ACCESS_TOKEN)
 export async function getRecipeFromMistral(ingredientsArr){
     const ingredientString = ingredientsArr.join(", ")
+    console.log("HF TOKEN:", import.meta.env.VITE_HF_ACCESS_TOKEN)
     try{
         const response =await hf.chatCompletion({
             model: "meta-llama/Llama-3.1-8B-Instruct",
