@@ -90,7 +90,6 @@ npm run dev
 
 - `.env` files are gitignored.
 - Default ingredient examples are preloaded in `Main.jsx` for quick testing.
-- Current document title in `index.html` is still `vite-react-project` and can be renamed if desired.
 
 ## License
 
