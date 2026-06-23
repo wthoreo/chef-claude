@@ -3,6 +3,10 @@
 Chef Claude is a React + Vite web app that suggests recipes from ingredients you already have.
 It uses the Hugging Face Inference API (Llama 3.1 Instruct) to generate recipe responses in Markdown, then renders them in the UI.
 
+## Live App
+
+- Vercel deployment: https://chef-claude-wthoreo257.vercel.app/
+
 ## Features
 
 - Add ingredients through a simple form
