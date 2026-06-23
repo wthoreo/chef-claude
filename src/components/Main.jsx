@@ -4,7 +4,7 @@ import IngredientsList from "./IngredientsList"
 import {getRecipeFromMistral} from "../ai"
 
 export default function Main(){
-    const [ingredients, setIngredients] = React.useState(["Chicken", "Indian Spices", "Onion", "Tomatoes"])
+    const [ingredients, setIngredients] = React.useState([])
     const [recipe, setRecipe] = React.useState("")
  
     async function getRecipe(){
